@@ -1,0 +1,33 @@
+import turtle
+import colorsys
+
+# Настройка экрана
+screen = turtle.Screen()
+screen.bgcolor("black")
+screen.title("Спиро-граф с использованием Turtle")
+screen.setup(width=800, height=800)
+
+# Настройка черепахи
+spiro = turtle.Turtle()
+spiro.speed(0)  # Максимальная скорость рисования
+spiro.width(2)
+spiro.hideturtle()
+
+# Параметры спиро-графа
+num_cycles = 360  # Количество циклов
+radius = 200      # Радиус спиро-графа
+
+for i in range(num_cycles):
+    # Генерация цвета через систему HSV
+    color = colorsys.hsv_to_rgb(i / num_cycles, 1.0, 1.0)
+    spiro.pencolor(color)
+    
+    # Угол для текущей точки
+    angle = i * 5
+    x = radius * turtle.cos(angle)
+    y = radius * turtle.sin(angle)
+    
+    spiro.goto(x, y)
+
+# Завершение
+turtle.done()
